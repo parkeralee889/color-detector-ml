@@ -1,0 +1,3 @@
+Hi, I am a high schooler and I am super interested in computer science and machine learning. This is one of my first projects.
+My goal for this project is to build a simple machine learning model from scratch that can identify a few different colors.
+I am building this project without ai, but I am using ai to help me learn concepts. Besides from that, I am writing the code and fixing the problems myself.
