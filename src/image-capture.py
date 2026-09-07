@@ -14,3 +14,9 @@ webcam_read = webcam.read()
 while(webcam_read[0]):
     # displays a window with the webcam output
     display = cv.imshow("webcam feed", webcam_read[1])
+    key = cv.waitKey(1)
+    if (key == -1):
+        webcam_read = webcam.read()
+    else:
+        webcam.release()
+        cv.destroyAllWindows()
