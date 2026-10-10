@@ -22,10 +22,14 @@ def zoom(frame, zoom_factor):
     #locate the dimensions for the cut out image
     center_x = int(w / 2)
     center_y = int(h / 2)
+    # the right side should be a little more for this zoom factor because
+    # the camera on the webcam is already sitting on the right side of the model
     left_x = int(center_x - (zoom_w / 2))
     top_y = int(center_y - (zoom_h / 2))
-    right_x = int(center_x + (zoom_w / 2))
-    bottom_y = int(center_y + (zoom_h / 2))
+    right_x = int(center_x + (zoom_w / 2) - (0.25 * zoom_w))
+    # a lot of the botttom is showing the walls of the model holding everything
+    # I filtered out the extra zoom in that area here
+    bottom_y = int(center_y + (zoom_h / 2) - (.1 * zoom_h))
 
     #new cropped frame object with the cut out image from the original frame
     cropped_frame = frame[top_y:bottom_y, left_x:right_x]
@@ -34,7 +38,7 @@ def zoom(frame, zoom_factor):
 #webcam.read returns a tuple [boolean: if the frame was read, numpy array: data of the image]
 webcam_read = webcam.read()
 #how zoomed in the webcam is
-zoom_factor = 2.0
+zoom_factor = 1.15
 #loop to output a video of the webcam
 while(webcam_read[0]):
     #resizes the webcam
